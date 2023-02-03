@@ -416,18 +416,19 @@ public class Main {
         String confirm = scanner.nextLine();
         if (confirm.equals("Y")) {
             System.out.println("The purchase was successful. Have a nice day!");
-            if (devices.size() == categories.size()) {
-                for (int i = 0; i < categories.size(); i++) {
+            try {
+                for (int i = 0; i < devices.size(); i++) {
                     String category = categories.get(i);
                     int id = productNums.get(i);
                     market.deleteDevice(category, id);
                 }
+                devices.clear();
+                categories.clear();
+                productNums.clear();
+                prices.clear();
+            } catch (IndexOutOfBoundsException e) {
+                buyerPart();
             }
-            devices.clear();
-            categories.clear();
-            productNums.clear();
-            prices.clear();
-            buyerPart();
         } else {
             printBasket();
         }
