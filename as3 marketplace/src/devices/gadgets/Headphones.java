@@ -27,3 +27,13 @@ public class Headphones extends Gadget {
         return noiseCancel;
     }
 }
+
+
+
+
+
+
+
+
+
+// created by Nursultan Serikov SE-2224
