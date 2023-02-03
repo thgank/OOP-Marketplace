@@ -19,3 +19,12 @@ public class Gadget extends Device {
     }
 
 }
+
+
+
+
+
+
+
+
+// created by Nursultan Serikov SE-2224
