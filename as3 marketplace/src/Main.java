@@ -1,24 +1,15 @@
 import devices.*;
-import devices.gadgets.Headphones;
-import devices.gadgets.Smartwatch;
-import devices.phones.MobilePhone;
-import devices.phones.Smartphone;
-import devices.tablets.BusinessTablet;
-import devices.tablets.DrawingTablet;
-import devices.tablets.GamingTablet;
-
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
     public static ArrayList<String> devices = new ArrayList<>();
     public static ArrayList<String> categories = new ArrayList<>();
-    public static ArrayList<Integer> productNums = new ArrayList<>();
+    public static ArrayList<Integer> productNumbs = new ArrayList<>();
     public static ArrayList<Double> prices = new ArrayList<>();
+    public static Market market = Market.getInstance();
 
     public static void main(String[] args) {
-        Market market = new Market();
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the TakePhone store!");
         login();
     }
@@ -38,7 +29,6 @@ public class Main {
         }
     }
     public static void newSeller(){
-        Market market = new Market();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type your name: ");
         String login = scanner.nextLine();
@@ -49,7 +39,6 @@ public class Main {
     }
     public static void getIn(){
         Scanner scanner = new Scanner(System.in);
-        Market market = new Market();
         System.out.println("Enter your login:");
         String login = scanner.nextLine();
         System.out.println("Enter your password:");
@@ -64,7 +53,6 @@ public class Main {
     }
     public static void sellerPart() {
         Scanner scanner = new Scanner(System.in);
-        Market market = new Market();
         System.out.println("--- LIST OF SELLERS ---");
         market.showSellers();
         System.out.println("0. Get back to login. ");
@@ -86,11 +74,10 @@ public class Main {
         }
 
     }
-    public static void sellOperate(String login){
-        Market market = new Market();
+    public static void sellOperate(String login) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("--- SELL OPERATIONS ---");
         while (true) {
+            System.out.println("--- SELL OPERATIONS ---");
             System.out.println("0. Get back to the list. ");
             System.out.println("1. Check your products. ");
             System.out.println("2. Update your products. ");
@@ -99,8 +86,7 @@ public class Main {
             int des = scanner.nextInt();
             if (des == 0) {
                 sellerPart();
-            }
-            else if (des == 1) {
+            } else if (des == 1) {
                 System.out.println("What exact product you want to check? ");
                 System.out.println("1. Headphones");
                 System.out.println("2. Smartwatch");
@@ -111,42 +97,42 @@ public class Main {
                 System.out.println("7. Smartphone");
                 System.out.println("8. Get back");
                 int choice = scanner.nextInt();
-                String category = "";
+                String category;
                 switch (choice) {
-                    case 1:
+                    case 1 -> {
                         category = "Headphones";
-                        market.readDevicesByLogin(category,login);
-                        break;
-                    case 2:
+                        market.readDevicesByLogin(category, login);
+                    }
+                    case 2 -> {
                         category = "Smartwatch";
-                        market.readDevicesByLogin(category,login);
-                        break;
-                    case 3:
+                        market.readDevicesByLogin(category, login);
+                    }
+                    case 3 -> {
                         category = "GamingTablet";
-                        market.readDevicesByLogin(category,login);
-                        break;
-                    case 4:
+                        market.readDevicesByLogin(category, login);
+                    }
+                    case 4 -> {
                         category = "DrawingTablet";
-                        market.readDevicesByLogin(category,login);
-                        break;
-                    case 5:
+                        market.readDevicesByLogin(category, login);
+                    }
+                    case 5 -> {
                         category = "BusinessTablet";
-                        market.readDevicesByLogin(category,login);
-                        break;
-                    case 6:
+                        market.readDevicesByLogin(category, login);
+                    }
+                    case 6 -> {
                         category = "MobilePhone";
-                        market.readDevicesByLogin(category,login);
-                        break;
-                    case 7:
+                        market.readDevicesByLogin(category, login);
+                    }
+                    case 7 -> {
                         category = "Smartphone";
-                        market.readDevicesByLogin(category,login);
-                        break;
-                    default:
+                        market.readDevicesByLogin(category, login);
+                    }
+                    default -> {
                         System.out.println("Invalid option, try again");
                         sellOperate(login);
+                    }
                 }
-            }
-            else if(des == 2){
+            } else if (des == 2) {
                 System.out.println("What exact product you want to update? ");
                 System.out.println("1. Headphones");
                 System.out.println("2. Smartwatch");
@@ -158,63 +144,63 @@ public class Main {
                 System.out.println("8. Get back");
                 int choice = scanner.nextInt();
                 int id;
-                String category = "";
+                String category;
                 switch (choice) {
-                    case 1:
+                    case 1 -> {
                         category = "Headphones";
-                        market.readDevicesByLogin(category,login);
+                        market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.updateProduct(id,category);
-                        break;
-                    case 2:
+                        market.updateProduct(id, category);
+                    }
+                    case 2 -> {
                         category = "Smartwatch";
-                        market.readDevicesByLogin(category,login);
+                        market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.updateProduct(id,category);
-                        break;
-                    case 3:
+                        market.updateProduct(id, category);
+                    }
+                    case 3 -> {
                         category = "GamingTablet";
-                        market.readDevicesByLogin(category,login);
+                        market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.updateProduct(id,category);
-                        break;
-                    case 4:
+                        market.updateProduct(id, category);
+                    }
+                    case 4 -> {
                         category = "DrawingTablet";
-                        market.readDevicesByLogin(category,login);
+                        market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.updateProduct(id,category);
-                        break;
-                    case 5:
+                        market.updateProduct(id, category);
+                    }
+                    case 5 -> {
                         category = "BusinessTablet";
-                        market.readDevicesByLogin(category,login);
+                        market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.updateProduct(id,category);
-                        break;
-                    case 6:
+                        market.updateProduct(id, category);
+                    }
+                    case 6 -> {
                         category = "MobilePhone";
-                        market.readDevicesByLogin(category,login);
+                        market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.updateProduct(id,category);
-                        break;
-                    case 7:
+                        market.updateProduct(id, category);
+                    }
+                    case 7 -> {
                         category = "Smartphone";
-                        market.readDevicesByLogin(category,login);
+                        market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.updateProduct(id,category);
-                        break;
-                    default:
+                        market.updateProduct(id, category);
+                    }
+                    default -> {
                         System.out.println("Invalid option, try again");
                         sellOperate(login);
+                    }
                 }
-            }
-            else if(des == 3) {
+            } else if (des == 3) {
                 System.out.println("What exact product you want to create ");
                 System.out.println("1. Headphones");
                 System.out.println("2. Smartwatch");
@@ -225,35 +211,11 @@ public class Main {
                 System.out.println("7. Smartphone");
                 System.out.println("8. Get back");
                 int choice = scanner.nextInt();
-                int id;
-                switch (choice) {
-                    case 1:
-                        market.initHeadphones(login);
-                        break;
-                    case 2:
-                        market.initSmartwatch(login);
-                        break;
-                    case 3:
-                        market.initGameTablet(login);
-                        break;
-                    case 4:
-                        market.initDrawTablet(login);
-                        break;
-                    case 5:
-                        market.initBusTablet(login);
-                        break;
-                    case 6:
-                        market.initMobilePhone(login);
-                        break;
-                    case 7:
-                        market.initSmartPhone(login);
-                        break;
-                    default:
-                        System.out.println("Invalid option, try again");
-                        sellOperate(login);
+                if (choice < 1 || choice > 7) {
+                    sellOperate(login);
                 }
-            }
-            else if(des==4) {
+                market.initDevice(login, choice);
+            } else if (des == 4) {
                 System.out.println("What exact product you want to delete? ");
                 System.out.println("1. Headphones");
                 System.out.println("2. Smartwatch");
@@ -265,69 +227,68 @@ public class Main {
                 System.out.println("8. Get back");
                 int choice = scanner.nextInt();
                 int id;
-                String category = "";
+                String category;
                 switch (choice) {
-                    case 1:
+                    case 1 -> {
                         category = "Headphones";
                         market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.deleteDevice(category,id);
-                        break;
-                    case 2:
+                        market.deleteDevice(category, id);
+                    }
+                    case 2 -> {
                         category = "Smartwatch";
                         market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.deleteDevice(category,id);
-                        break;
-                    case 3:
+                        market.deleteDevice(category, id);
+                    }
+                    case 3 -> {
                         category = "GamingTablet";
                         market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.deleteDevice(category,id);
-                        break;
-                    case 4:
+                        market.deleteDevice(category, id);
+                    }
+                    case 4 -> {
                         category = "DrawingTablet";
                         market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.deleteDevice(category,id);
-                        break;
-                    case 5:
+                        market.deleteDevice(category, id);
+                    }
+                    case 5 -> {
                         category = "BusinessTablet";
                         market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.deleteDevice(category,id);
-                        break;
-                    case 6:
+                        market.deleteDevice(category, id);
+                    }
+                    case 6 -> {
                         category = "MobilePhone";
                         market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.deleteDevice(category,id);
-                        break;
-                    case 7:
+                        market.deleteDevice(category, id);
+                    }
+                    case 7 -> {
                         category = "Smartphone";
                         market.readDevicesByLogin(category, login);
                         System.out.println("Type ID: ");
                         id = scanner.nextInt();
-                        market.deleteDevice(category,id);
-                        break;
-                    default:
+                        market.deleteDevice(category, id);
+                    }
+                    default -> {
                         System.out.println("Invalid option, try again");
                         sellOperate(login);
+                    }
                 }
             }
         }
     }
     public static void buyerPart() {
-        Market market = new Market();
         Scanner scanner = new Scanner(System.in);
         System.out.println("--- BUYER PART ---");
-        while (true) {
             System.out.println("Choose the product category you are interested in:");
             System.out.println("1. Headphones");
             System.out.println("2. Smartwatch");
@@ -368,16 +329,21 @@ public class Main {
                 case 8:
                     printBasket();
                 default:
-                    System.out.println("Invalid option, try again");
                     buyerPart();
             }
             System.out.println("The following products are available in the selected category:");
             market.readDevices(category);
-            System.out.println("Enter the product number to see more, or 0 to exit:");
+            System.out.println("0. Exit");
+            System.out.println("1. Sort");
+            System.out.println("Enter the product number to see more");
             int productNum = scanner.nextInt();
             if (productNum == 0) {
                 buyerPart();
-            } else {
+            }
+            else if(productNum==1){
+                sortDevices(category);
+            }
+            else {
                 market.readDevicesByID(category, productNum);
             }
             System.out.println("0. Exit. ");
@@ -386,7 +352,7 @@ public class Main {
             if(dilemma==1){
                 categories.add(category);
                 devices.add(market.returnModel(category,productNum));
-                productNums.add(productNum);
+                productNumbs.add(productNum);
                 prices.add(market.returnPrice(category,productNum));
                 System.out.println("Added to basket successfully!");
                 buyerPart();
@@ -395,17 +361,75 @@ public class Main {
                 buyerPart();
             }
         }
+    public static void sortDevices(String category){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("In which way you want to sort devices?");
+        System.out.println("0. Exit.");
+        System.out.println("1. By price.");
+        System.out.println("2. By brand.");
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 0 -> buyerPart();
+            case 1 -> sortByPrice(category);
+            case 2 -> sortByBrand(category);
+        }
+        System.out.println("Enter the product number to see more or 0 to exit.");
+        int prodNum = scanner.nextInt();
+        if(prodNum==0){
+            buyerPart();
+        }
+        else{
+            market.readDevicesByID(category, prodNum);
+        }
+        System.out.println("0. Exit. ");
+        System.out.println("1. Buy it.");
+        int dilemma = scanner.nextInt();
+        if(dilemma==1){
+            categories.add(category);
+            devices.add(market.returnModel(category,prodNum));
+            productNumbs.add(prodNum);
+            prices.add(market.returnPrice(category,prodNum));
+            System.out.println("Added to basket successfully!");
+            buyerPart();
+        }
+        else{
+            buyerPart();
+        }
+    }
+    public static void sortByPrice(String category){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1. By ascending.");
+        System.out.println("2. By descending.");
+        System.out.println("3. By set prices.");
+        int nextChoice = scanner.nextInt();
+        switch (nextChoice) {
+            case 1 -> market.sortDevicesByPriceAscending(category);
+            case 2 -> market.sortDevicesByPriceDescending(category);
+            case 3 -> {
+                System.out.println("Enter start price: ");
+                double startPrice = scanner.nextInt();
+                System.out.println("Enter end price: ");
+                double endPrice = scanner.nextInt();
+                market.sortDevicesBySetPrice(category, startPrice, endPrice);
+            }
+        }
+    }
+    public static void sortByBrand(String category){
+        Scanner scanner = new Scanner(System.in);
+        market.readBrands(category);
+        System.out.println("Choice brand: ");
+        String brand = scanner.nextLine();
+        market.readDevicesByBrand(category, brand);
     }
     public static void removeDevice(int productNum){
-        int index = productNums.indexOf(productNum);
+        int index = productNumbs.indexOf(productNum);
         if(index != -1){
             devices.remove(index);
-            productNums.remove(index);
+            productNumbs.remove(index);
             prices.remove(index);
         }
     }
     public static void confirm() {
-        Market market = new Market();
         Scanner scanner = new Scanner(System.in);
         double total = 0;
         for (Double price : prices) {
@@ -419,12 +443,12 @@ public class Main {
             try {
                 for (int i = 0; i < devices.size(); i++) {
                     String category = categories.get(i);
-                    int id = productNums.get(i);
+                    int id = productNumbs.get(i);
                     market.deleteDevice(category, id);
                 }
                 devices.clear();
                 categories.clear();
-                productNums.clear();
+                productNumbs.clear();
                 prices.clear();
             } catch (IndexOutOfBoundsException e) {
                 buyerPart();
@@ -443,13 +467,18 @@ public class Main {
     }
     public static void printBasket(){
         Scanner scanner = new Scanner(System.in);
+        double total = 0;
+        for (Double price : prices) {
+            total += price;
+        }
         for (int i = 0; i < devices.size(); i++) {
             System.out.println("Product "+ (i+1));
             System.out.println("Model "+devices.get(i));
-            System.out.println("ID "+productNums.get(i));;
+            System.out.println("ID "+ productNumbs.get(i));
             System.out.println("Price "+prices.get(i));
             System.out.println("--------------------");
         }
+        System.out.println("Total price: "+total);
         System.out.println("0. Get Back");
         System.out.println("1. Make a purchase.");
         System.out.println("2. Delete products.");
@@ -463,7 +492,3 @@ public class Main {
     }
 }
 
-
-
-
-// created by Nursultan Serikov SE-2224

@@ -38,10 +38,3 @@ public class Smartwatch  extends Gadget{
     }
 
 }
-
-
-
-
-
-
-// created by Nursultan Serikov SE-2224

@@ -10,7 +10,6 @@ public class Headphones extends Gadget {
         setNoiseCancel(noiseCancel);
     }
 
-
     public void setAudioQuality(String audioQuality) {
         this.audioQuality = audioQuality;
     }
@@ -27,13 +26,3 @@ public class Headphones extends Gadget {
         return noiseCancel;
     }
 }
-
-
-
-
-
-
-
-
-
-// created by Nursultan Serikov SE-2224

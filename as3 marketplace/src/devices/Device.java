@@ -1,17 +1,14 @@
 package devices;
 
 public abstract class Device implements DeviceSpecification {
-    private static int idCounter = 0;
     private String brand;
     private String model;
     private double price;
-    private int id;
 
     public Device(String brand, String model, double price) {
         setBrand(brand);
         setModel(model);
         setPrice(price);
-        setId(++idCounter);
     }
 
     public void setPrice(double price) {
@@ -36,8 +33,5 @@ public abstract class Device implements DeviceSpecification {
 
     public double getPrice() {
         return price;
-    }
-    protected void setId(int id) {
-        this.id = id;
     }
 }
