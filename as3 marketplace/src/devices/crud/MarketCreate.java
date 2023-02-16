@@ -4,9 +4,13 @@ import java.sql.*;
 import devices.gadgets.*;
 import devices.phones.*;
 import devices.tablets.*;
+import devices.factory.*;
 
 
 public class MarketCreate {
+    public static GadgetsFactory gadgetsFactory = new GadgetsFactory();
+    public static PhonesFactory phonesFactory = new PhonesFactory();
+    public static TabletFactory tabletFactory = new TabletFactory();
     public void initDevice(String login, int choice) {
         Scanner scanner = new Scanner(System.in);
         switch (choice) {
@@ -23,7 +27,7 @@ public class MarketCreate {
                 String audioQuality = scanner.nextLine();
                 System.out.println("Enter Noise Cancel (true/false): ");
                 boolean noiseCancel = Boolean.parseBoolean(scanner.nextLine());
-                Headphones headphones = new Headphones(brand, model, price, type, audioQuality, noiseCancel);
+                Headphones headphones = gadgetsFactory.createHeadphones(brand, model, price, type, audioQuality, noiseCancel);
                 try {
                     Class.forName("org.postgresql.Driver");
                     Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/as3help", "postgres", "mercytop38");
@@ -57,7 +61,7 @@ public class MarketCreate {
                 boolean heartRate = Boolean.parseBoolean(scanner.nextLine());
                 System.out.println("Enter Fitness Tracker (true/false): ");
                 boolean fitnessTracker = Boolean.parseBoolean(scanner.nextLine());
-                Smartwatch smartwatch = new Smartwatch(brand, model, price, type, operatingSystem, fitnessTracker, heartRate);
+                Smartwatch smartwatch = gadgetsFactory.createSmartwatch(brand, model, price, type, operatingSystem, fitnessTracker, heartRate);
                 try {
                     Class.forName("org.postgresql.Driver");
                     Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/as3help", "postgres", "mercytop38");
@@ -98,7 +102,7 @@ public class MarketCreate {
                 String gpu = scanner.nextLine();
                 System.out.println("Enter VR support (true/false): ");
                 boolean vrSupport = Boolean.parseBoolean(scanner.nextLine());
-                GamingTablet gamingTablet = new GamingTablet(brand, model, price, stylusSup, keyboardSup, screenRatio, memory, ram, gpu, vrSupport);
+                GamingTablet gamingTablet = tabletFactory.createGamingTablet(brand, model, price, stylusSup, keyboardSup, screenRatio, memory, ram, gpu, vrSupport);
                 try {
                     Class.forName("org.postgresql.Driver");
                     Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/as3help", "postgres", "mercytop38");
@@ -138,7 +142,7 @@ public class MarketCreate {
                 int pressureSensitivity = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter eraser support (true/false): ");
                 boolean eraser = Boolean.parseBoolean(scanner.nextLine());
-                DrawingTablet drawingTablet = new DrawingTablet(brand, model, price, stylusSup, keyboardSup, screenRatio, pressureSensitivity, eraser);
+                DrawingTablet drawingTablet = tabletFactory.createDrawingTablet(brand, model, price, stylusSup, keyboardSup, screenRatio, pressureSensitivity, eraser);
                 try {
                     Class.forName("org.postgresql.Driver");
                     Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/as3help", "postgres", "mercytop38");
@@ -176,7 +180,7 @@ public class MarketCreate {
                 boolean facialRecognition = Boolean.parseBoolean(scanner.nextLine());
                 System.out.println("Enter Finger Print scanner support (true/false): ");
                 boolean fingerprintScanner = Boolean.parseBoolean(scanner.nextLine());
-                BusinessTablet businessTablet = new BusinessTablet(brand, model, price, stylusSup, keyboardSup, screenRatio, fingerprintScanner, facialRecognition);
+                BusinessTablet businessTablet = tabletFactory.createBusinessTablet(brand, model, price, stylusSup, keyboardSup, screenRatio, fingerprintScanner, facialRecognition);
                 try {
                     Class.forName("org.postgresql.Driver");
                     Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/as3help", "postgres", "mercytop38");
@@ -214,7 +218,7 @@ public class MarketCreate {
                 String camera = scanner.nextLine();
                 System.out.println("Enter Dual Sim (true/false): ");
                 boolean dualSim = Boolean.parseBoolean(scanner.nextLine());
-                MobilePhone mobilePhone = new MobilePhone(brand, model, price, ram, memory, screenSize, camera, dualSim);
+                MobilePhone mobilePhone = phonesFactory.createMobilePhone(brand, model, price, ram, memory, screenSize, camera, dualSim);
                 try {
                     Class.forName("org.postgresql.Driver");
                     Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/as3help", "postgres", "mercytop38");
@@ -257,7 +261,7 @@ public class MarketCreate {
                 boolean faceID = Boolean.parseBoolean(scanner.nextLine());
                 System.out.println("Enter Fingerprint Sensor (true/false): ");
                 boolean fingerprintSensor = Boolean.parseBoolean(scanner.nextLine());
-                Smartphone smartphone = new Smartphone(brand, model, price, ram, memory, screenSize, OS, camera, faceID, fingerprintSensor);
+                Smartphone smartphone = phonesFactory.createSmartphone(brand, model, price, ram, memory, screenSize, OS, camera, faceID, fingerprintSensor);
                 try {
                     Class.forName("org.postgresql.Driver");
                     Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/as3help", "postgres", "mercytop38");

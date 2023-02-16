@@ -22,15 +22,15 @@ public abstract class Device implements DeviceSpecification {
     public void setBrand(String brand) {
         this.brand = brand;
     }
-
+    @Override
     public String getBrand() {
         return brand;
     }
-
+    @Override
     public String getModel() {
         return model;
     }
-
+    @Override
     public double getPrice() {
         return price;
     }

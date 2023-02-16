@@ -22,6 +22,7 @@ public class Smartphone extends Phone {
         this.fingerprintSensor = fingerprintSensor;
     }
 
+
     public void setFaceID(boolean faceID) {
         this.faceID = faceID;
     }
@@ -33,4 +34,5 @@ public class Smartphone extends Phone {
     public boolean isFingerprintSensor() {
         return fingerprintSensor;
     }
+
 }

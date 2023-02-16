@@ -1,6 +1,6 @@
 package devices.phones;
 
-public class MobilePhone extends Phone {
+public class MobilePhone extends Phone{
     private boolean dualSim;
     public MobilePhone(String brand, String model, double price, int ram, int memory, String screenSize, String camera, boolean dualSim) {
         super(brand, model, price, ram, memory, screenSize, camera);
@@ -13,5 +13,8 @@ public class MobilePhone extends Phone {
 
     public boolean isDualSim() {
         return dualSim;
+    }
+    public MobilePhone build() {
+        return new MobilePhone(getBrand(), getModel(), getPrice(), getRam(), getMemory(), getScreenSize(), getCamera(), dualSim);
     }
 }
